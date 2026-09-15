@@ -4,13 +4,9 @@ import { Activity } from './models/activity.js'
 import { Team } from './models/team.js'
 import { User } from './models/user.js'
 import { Workout } from './models/workout.js'
+import { apiBaseUrl, port } from './server.js'
 
 const app = express()
-const port = 8000
-const codespaceName = process.env.CODESPACE_NAME
-const apiBaseUrl = codespaceName
-  ? `https://${codespaceName}-8000.app.github.dev`
-  : 'http://localhost:8000'
 
 app.use(express.json())
 app.use((_request, response, next) => {
