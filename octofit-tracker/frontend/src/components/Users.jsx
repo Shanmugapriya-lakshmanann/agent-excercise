@@ -1,12 +1,14 @@
 import { useEffect, useState } from 'react'
-import { fetchItems } from '../api.js'
+import { apiBaseUrl, fetchItems } from '../api.js'
+
+const usersEndpoint = `${apiBaseUrl}/api/users/`
 
 function Users() {
   const [users, setUsers] = useState([])
   const [error, setError] = useState('')
 
   useEffect(() => {
-    fetchItems('users').then(setUsers).catch((loadError) => setError(loadError.message))
+    fetchItems(usersEndpoint).then(setUsers).catch((loadError) => setError(loadError.message))
   }, [])
 
   return <ResourceTable title="Users" error={error}>
