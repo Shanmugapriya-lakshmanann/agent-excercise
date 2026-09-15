@@ -6,6 +6,14 @@ import Teams from './components/Teams.jsx'
 import Users from './components/Users.jsx'
 import Workouts from './components/Workouts.jsx'
 
+const navigationItems = [
+  ['users', 'Users'],
+  ['activities', 'Activities'],
+  ['teams', 'Teams'],
+  ['leaderboard', 'Leaderboard'],
+  ['workouts', 'Workouts'],
+]
+
 function App() {
   return (
     <div className="app-shell">
@@ -13,14 +21,12 @@ function App() {
         <div className="container">
           <NavLink className="navbar-brand fw-bold" to="/users">OctoFit Tracker</NavLink>
           <nav className="navbar-nav flex-row flex-wrap gap-2" aria-label="Primary navigation">
-            {[
-              ['users', 'Users'],
-              ['activities', 'Activities'],
-              ['teams', 'Teams'],
-              ['leaderboard', 'Leaderboard'],
-              ['workouts', 'Workouts'],
-            ].map(([path, label]) => (
-              <NavLink className="nav-link px-2" key={path} to={`/${path}`}>
+            {navigationItems.map(([path, label]) => (
+              <NavLink
+                className={({ isActive }) => `nav-link px-2${isActive ? ' active' : ''}`}
+                key={path}
+                to={`/${path}`}
+              >
                 {label}
               </NavLink>
             ))}
