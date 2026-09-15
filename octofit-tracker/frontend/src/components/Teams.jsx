@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react'
-import { apiBaseUrl, fetchItems } from '../api.js'
+import { fetchItems } from '../api.js'
 
-const teamsEndpoint = `${apiBaseUrl}/api/teams/`
+const teamsEndpoint = import.meta.env.VITE_CODESPACE_NAME?.trim()
+  ? `https://${import.meta.env.VITE_CODESPACE_NAME}-8000.app.github.dev/api/teams/`
+  : 'http://localhost:8000/api/teams/'
 
 function Teams() {
   const [teams, setTeams] = useState([])
